@@ -5,7 +5,7 @@ const Config = require('./config')
 const criteria = { env: process.env.NODE_ENV }
 
 const manifest = {
-  $meta: 'This file defines the plot device.',
+  $meta: 'This file defines GlassJaw.',
   server: {
     app: {
       siteTitle: Config.get('/app/siteTitle'),

@@ -1,5 +1,5 @@
 {
-  "name": "edi",
+  "name": "glassjaw",
   "version": "0.0.0",
   "description": "Hapi demonstration",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "lintall": "standard && npm run jsonlint",
     "lint": "standard"
   },
-  "repository": "millette/edi",
+  "repository": "millette/glassjaw",
   "author": {
     "name": "Robin Millette",
     "email": "robin@millette.info",

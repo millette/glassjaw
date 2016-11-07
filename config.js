@@ -16,9 +16,9 @@ const defFalse = {
 }
 
 const config = {
-  $meta: 'This file configures the plot device.',
-  projectName: 'hapi-demo',
-  app: { siteTitle: 'Super titre pour un super site' },
+  $meta: 'This file configures GlassJaw.',
+  projectName: 'glassjaw',
+  app: { siteTitle: 'GlassJaw' },
   i18n: {
     autoReload: defTrue,
     updateFiles: defTrue,
