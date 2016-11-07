@@ -1,9 +1,6 @@
 'use strict'
 
 exports.register = function (server, options, next) {
-  const list1 = require('../../data/list1.json')
-  const list2 = require('../../data/list2.json')
-
   server.views({
     engines: { html: require('lodash-vision') },
     path: 'templates',
@@ -14,12 +11,7 @@ exports.register = function (server, options, next) {
   server.route({
     method: 'GET',
     path: '/{languageCode}/',
-    handler: {
-      view: {
-        template: 'index',
-        context: { items: list1.items, items2: list2.items }
-      }
-    }
+    handler: { view: 'index' }
   })
 
   server.route({
