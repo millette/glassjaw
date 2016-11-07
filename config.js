@@ -24,7 +24,7 @@ const config = {
     updateFiles: defTrue,
     locales: ['fr', 'en']
   },
-  db: { url: 'http://localhost:5990' },
+  db: { url: 'http://localhost:5991' },
   cookie: {
     password: 'password-should-be-32-characters',
     secure: defFalse
@@ -34,7 +34,7 @@ const config = {
     web: {
       $filter: 'env',
       test: 9090,
-      $default: 8095
+      $default: 8096
     }
   }
 }
