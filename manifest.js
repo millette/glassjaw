@@ -11,7 +11,7 @@ const manifest = {
       siteTitle: Config.get('/app/siteTitle'),
       languages: Config.get('/i18n/locales')
     },
-    debug: { request: ['error'] },
+    debug: { log: ['error'] },
     connections: { routes: { security: true } }
   },
   connections: [{
@@ -34,13 +34,22 @@ const manifest = {
     },
     {
       plugin: {
-        options: { cookie: {
-          password: Config.get('/cookie/password'),
-          secure: Config.get('/cookie/secure')
-        } },
+        options: {
+//          cache: require('catbox-redis'),
+          cookie: {
+            password: Config.get('/cookie/password'),
+            secure: Config.get('/cookie/secure')
+          }
+        },
         register: './plugins/login/index'
       },
       options: { routes: { prefix: '/user' } }
+    },
+    {
+      plugin: {
+        register: 'hapi-favicon',
+        options: { path: 'assets/img/favicon.ico' }
+      }
     },
     { plugin: 'hapi-context-app' },
     { plugin: 'hapi-context-credentials' },
