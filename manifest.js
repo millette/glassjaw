@@ -11,6 +11,7 @@ const manifest = {
       siteTitle: Config.get('/app/siteTitle'),
       languages: Config.get('/i18n/locales')
     },
+    cache: 'catbox-redis',
     debug: { log: ['error'], request: ['error'] },
     connections: { routes: { security: true } }
   },
@@ -35,7 +36,6 @@ const manifest = {
     {
       plugin: {
         options: {
-          cache: require('catbox-redis'),
           cookie: {
             password: Config.get('/cookie/password'),
             secure: Config.get('/cookie/secure')
