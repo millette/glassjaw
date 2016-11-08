@@ -55,7 +55,6 @@ const edit = function (request, reply) {
 }
 
 const login = function (request, reply) {
-//  console.log('LOGIN', request.payload)
   if (request.auth.isAuthenticated) { return nextUrl(request, reply) }
   auth(request.payload.name, request.payload.password)
     .then((result) => userSelf(request.payload.name, result[1]['set-cookie']))
@@ -67,7 +66,13 @@ const login = function (request, reply) {
         nextUrl(request, reply)
       })
     })
-    .catch((err) => reply.boom(err.statusCode || 500, err))
+    .catch((err) => {
+      if (err.description) {
+        reply.serverUnavailable(err.description)
+      } else {
+        reply.boom(err.statusCode || 500, err)
+      }
+    })
 }
 
 const logout = function (request, reply) {
