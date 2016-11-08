@@ -112,9 +112,7 @@ const register = function (request, reply) {
 }
 
 exports.register = (server, options, next) => {
-//  console.log('OPTS:', options)
   server.register(exports.register.attributes.dependencies.map((dep) => require(dep)), (err) => {
-//    console.log('ERR:', err)
     if (err) { throw err }
     const cache = server.cache({ segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000 })
     server.app.cache = cache
@@ -122,9 +120,7 @@ exports.register = (server, options, next) => {
       password: options.cookie.password,
       isSecure: options.cookie.secure,
       validateFunc: (request, session, callback) => {
-//        console.log('VAL')
         cache.get(session.sid, (err, cached) => {
-//          console.log('CACHE err:', err)
           if (err) { return callback(err, false) }
           if (!cached) { return callback(null, false) }
           callback(null, true, cached.account)
