@@ -6,6 +6,23 @@ git clone https://github.com/millette/hapi-demo.git
 cd hapi-demo
 ```
 
+Install redis server:
+```
+aptitude install -t jessie-backports redis-server
+```
+
+Version 3.2.5 with jessie-backports; 2.8.17 with jessie.
+Only tested with the backport.
+
+This will also install redis-cli. To see that it works,
+open a terminal and type to see its activity:
+```
+redis-cli monitor
+```
+
+CTRL-C when you're satisfied it works.
+
+
 If you don't already have it, install yarn, an npm alternative:
 ```
 npm install yarn -g
