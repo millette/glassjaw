@@ -16,10 +16,6 @@ et les choix de l'utilisateur.</p>
 <li>Langues du fureteur ordonnées par préférence: <code><%- data.userLanguages.join(', ') %></code></li>
 <li><%- data.__(data.languageCode) %> (langue par défaut du site)</li>
 </ol>
-<h4>Choix</h4>
-<p>
-<%- (data.credentials && data.credentials.name) ? data.__(data.languageChoice) : 'Non applicable' %>
-</p>
 </div>
 </div>
 <div class="medium-6 column">
@@ -30,10 +26,6 @@ et les choix de l'utilisateur.</p>
 <li>Langues du fureteur ordonnées par préférence: <code><%- data.userLanguages.join(', ') %></code></li>
 <li><%- data.__(data.languageCode) %> (langue par défaut du site)</li>
 </ol>
-<h4>Choix</h4>
-<p>
-<%- (data.credentials && data.credentials.name) ? 'Non applicable' : data.__(data.languageChoice) %>
-</p>
 </div>
 </div>
 </div>

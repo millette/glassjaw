@@ -6,9 +6,9 @@ const frontPage = function (request, reply) {
   const language = request.i18n.locale || request.i18n.getLocale()
   // const language = request.state.localeCookie || request.i18n.locale || request.i18n.getLocale()
   // console.log('state1:', request.state) // expecting
-  // request.i18n.setLocale(language)
-  return reply
-    .view('pick-language', { languageChoice: language })
+  request.i18n.setLocale(language)
+  reply.view('pick-language')
+  // reply.view('pick-language', { languageChoice: language })
 }
 
 exports.register = function (server, options, next) {
