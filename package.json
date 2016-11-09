@@ -27,6 +27,7 @@
     "glue": "4.x.x",
     "h2o2": "AVVS/h2o2",
     "hapi": "15.x.x",
+    "hapi-accept-language": "^1.0.1",
     "hapi-auth-cookie": "^6.1.1",
     "hapi-boom-decorators": "^2.1.0",
     "hapi-context-app": "^0.2.1",

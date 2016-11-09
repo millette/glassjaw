@@ -3,10 +3,42 @@
 <%= partials.head(data) %>
 <body>
 <div class="row column">
-<ul>
-  <li><a href="/fr/">Français</a></li>
-  <li><a href="/en/">English</a></li>
-</ul>
+<h2>Langue de la page d'accueil</h2>
+<p>Plusieurs cas sont possibles. On doit négocier (trouver l'intersection) entre
+les langues disponibles sur le serveur <code><%- data.app.languages.join(', ') %></code>
+et les choix de l'utilisateur.</p>
+<div class="row">
+<div class="medium-6 column">
+<div class="callout<%- data.credentials && data.credentials.name && ' primary' || '' %>">
+<h3>Utilisateur connecté</h3>
+<ol>
+<li>Langue configurée dans le profil</li>
+<li>Langues du fureteur ordonnées par préférence: <code><%- data.userLanguages.join(', ') %></code></li>
+<li><%- data.__(data.languageCode) %> (langue par défaut du site)</li>
+</ol>
+<h4>Choix</h4>
+<p>
+<%- (data.credentials && data.credentials.name) ? data.__(data.languageChoice) : 'Non applicable' %>
+</p>
+</div>
+</div>
+<div class="medium-6 column">
+<div class="callout<%- (data.credentials && data.credentials.name) ? '' : ' primary' %>">
+<h3>Utilisateur non connecté</h3>
+<ol>
+<li>Langue configurée dans un <i>cookie</i></li>
+<li>Langues du fureteur ordonnées par préférence: <code><%- data.userLanguages.join(', ') %></code></li>
+<li><%- data.__(data.languageCode) %> (langue par défaut du site)</li>
+</ol>
+<h4>Choix</h4>
+<p>
+<%- (data.credentials && data.credentials.name) ? 'Non applicable' : data.__(data.languageChoice) %>
+</p>
+</div>
+</div>
+</div>
+<%= partials.languages(data) %>
+<pre><%= JSON.stringify(data, null, '  ') %></pre>
 </div>
 <script src="/js/vendor/jquery.js"></script>
 <script src="/js/vendor/what-input.js"></script>

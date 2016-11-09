@@ -8,6 +8,9 @@ exports.register = function (server, options, next) {
     if (request.response.variety === 'view') {
       request.response.source.context.userLanguages = _.uniq(request.languages)
       request.response.source.context.pathparts = request.url.pathname.split('/').slice(1)
+      if (request.response.source.context.pathparts.length === 1 && request.response.source.context.pathparts[0] === '') {
+        request.response.source.context.pathparts.push('')
+      }
     }
     return reply.continue()
   })

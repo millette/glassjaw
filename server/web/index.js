@@ -1,5 +1,12 @@
 'use strict'
 
+const _ = require('lodash')
+
+const frontPage = function (request, reply) {
+  const language = request.i18n.locale || request.i18n.getLocale()
+  reply.view('pick-language', { languageChoice: language })
+}
+
 exports.register = function (server, options, next) {
   server.views({
     engines: { html: require('lodash-vision') },
@@ -8,6 +15,13 @@ exports.register = function (server, options, next) {
     isCached: options.templateCached
   })
 
+/*
+  server.route({
+    method: 'GET',
+    path: '/{languageCode}',
+    handler: { view: 'index' }
+  })
+*/
   server.route({
     method: 'GET',
     path: '/{languageCode}/',
@@ -17,7 +31,7 @@ exports.register = function (server, options, next) {
   server.route({
     method: 'GET',
     path: '/',
-    handler: { view: 'pick-language' }
+    handler: frontPage
   })
 
   server.route({
