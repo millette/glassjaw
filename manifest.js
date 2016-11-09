@@ -52,7 +52,7 @@ const manifest = {
         options: { path: 'assets/img/favicon.ico' }
       }
     },
-    { plugin: 'hapi-accept-language' },
+//    { plugin: 'hapi-accept-language' },
     { plugin: 'hapi-context-app' },
     { plugin: 'hapi-context-credentials' },
     { plugin: 'h2o2' },
