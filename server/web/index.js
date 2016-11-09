@@ -4,10 +4,30 @@ const _ = require('lodash')
 
 const frontPage = function (request, reply) {
   const language = request.i18n.locale || request.i18n.getLocale()
-  reply.view('pick-language', { languageChoice: language })
+  // const language = request.state.localeCookie || request.i18n.locale || request.i18n.getLocale()
+  // console.log('state1:', request.state) // expecting
+  // request.i18n.setLocale(language)
+  return reply
+    .view('pick-language', { languageChoice: language })
 }
 
 exports.register = function (server, options, next) {
+/*
+  server.state('localeCookie', {
+    autoValue: (request, next) => {
+      console.log(
+        'hello:',
+        request.i18n.locale || request.i18n.getLocale(),
+        request.i18n.locale,
+        request.i18n.getLocale(),
+        Object.keys(request)
+      )
+      next(null, request.i18n.locale || request.i18n.getLocale())
+    },
+    isSecure: false
+  })
+*/
+
   server.views({
     engines: { html: require('lodash-vision') },
     path: 'templates',
@@ -22,6 +42,7 @@ exports.register = function (server, options, next) {
     handler: { view: 'index' }
   })
 */
+
   server.route({
     method: 'GET',
     path: '/{languageCode}/',

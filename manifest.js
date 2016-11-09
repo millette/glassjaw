@@ -26,6 +26,7 @@ const manifest = {
         options: {
           locales: Config.get('/i18n/locales'),
           defaultLocale: 'fr',
+          // cookie: 'localeCookie',
           autoReload: Config.get('/i18n/autoReload'),
           updateFiles: Config.get('/i18n/updateFiles'),
           indent: '  ',
