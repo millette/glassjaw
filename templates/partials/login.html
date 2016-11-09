@@ -27,7 +27,7 @@
         <input type="text" name="fullname" placeholder="fullname" value="<%- data.credentials.fullname %>">
         <select name="language">
           <% _(data.app.languages).each((l) => { %>
-          <option value="<%- l %>" <%- l === data.languageCode ? 'selected' : '' %>><%- data.__(l) %></option>
+          <option value="<%- l %>" <%- l === (data.credentials.language || data.languageCode) ? 'selected' : '' %>><%- data.__(l) %></option>
           <% }) %>
         </select>
         <input type="hidden" name="next" value="/<%- data.pathparts.join('/') %>">

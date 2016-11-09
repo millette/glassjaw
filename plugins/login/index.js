@@ -15,7 +15,7 @@ const nextUrl = (request, reply) => reply.redirect(request.payload.next || '/')
 const selfDb = (cookie) => nano({ url: Config.get('/db/url') + '/_users', cookie: cookie })
 
 const makeAccount = (doc, cookie) => {
-  const body = _.pick(doc, ['_id', '_rev', 'name', 'roles', 'fullname'])
+  const body = _.pick(doc, ['_id', '_rev', 'name', 'roles', 'fullname', 'language'])
   body.cookie = cookie
   return body
 }
@@ -32,11 +32,12 @@ const userEdit = (request) => {
   const insertUser = pify(dbSelf.insert, { multiArgs: true })
   return getUser(request.auth.credentials._id)
     .then((result) => {
-      if (request.payload.fullname) { result[0].fullname = request.payload.fullname }
       if (request.payload.newpassword) {
         if (request.payload.newpassword !== request.payload.password2) { throw Boom.notAcceptable('Passwords don\'t match.') }
         result[0].password = request.payload.newpassword
       }
+      if (request.payload.fullname) { result[0].fullname = request.payload.fullname }
+      if (request.payload.language) { result[0].language = request.payload.language }
       const account = makeAccount(result[0], result[1]['set-cookie'] || request.auth.credentials.cookie)
       return new Promise((resolve, reject) => {
         request.server.app.cache.set(account.name, { account: account }, 0, (err) => {
