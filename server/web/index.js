@@ -1,6 +1,6 @@
 'use strict'
 
-const _ = require('lodash')
+// const _ = require('lodash')
 
 const frontPage = function (request, reply) {
   const language = request.i18n.locale || request.i18n.getLocale()
