@@ -4,7 +4,7 @@
 const Boom = require('boom')
 const _ = require('lodash')
 const pify = require('pify')
-const nano = require('nano')
+const nano = require('cloudant-nano')
 const Config = require('../../config')
 
 const db = nano(Config.get('/db/url'))

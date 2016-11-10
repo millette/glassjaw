@@ -23,6 +23,7 @@
   "dependencies": {
     "boom": "^4.2.0",
     "catbox-redis": "^2.0.2",
+    "cloudant-nano": "^6.4.1",
     "confidence": "3.x.x",
     "glue": "4.x.x",
     "h2o2": "AVVS/h2o2",
@@ -37,7 +38,6 @@
     "inert": "^4.0.2",
     "lodash": "^4.16.6",
     "lodash-vision": "^0.0.1",
-    "nano": "^6.2.0",
     "pify": "^2.3.0",
     "vision": "4.x.x",
     "wreck": "^10.0.0"
