@@ -64,11 +64,11 @@ const manifest = {
       options: { routes: { prefix: '/api' } }
     },
     {
+      options: { routes: { prefix: '/{languageCode}' } },
       plugin: {
-        register: './server/pro/index',
+        register: './server/main/index',
         options: { templateCached: Config.get('/cache/web') }
-      },
-      options: { routes: { prefix: '/{languageCode}/pro' } }
+      }
     },
     {
       plugin: {
