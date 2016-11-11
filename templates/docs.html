@@ -3,8 +3,9 @@
 <%= partials.head(data) %>
 <body>
 <div class="row column">
+<%= partials.login(data) %>
 <h2><%- data.__('Les docs') %></h2>
 <% _(data.docs).each((doc, i) => { %>
-<%= partials.doc({ doc: doc }) %>
+<%= partials.doc({ doc: doc, i: i }) %>
 <% }) %>
 <%= partials.foot(data) %>
