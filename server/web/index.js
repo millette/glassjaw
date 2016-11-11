@@ -1,33 +1,15 @@
 'use strict'
 
-// const _ = require('lodash')
-
 const frontPage = function (request, reply) {
   const language = request.i18n.locale || request.i18n.getLocale()
-  // const language = request.state.localeCookie || request.i18n.locale || request.i18n.getLocale()
-  // console.log('state1:', request.state) // expecting
-  request.i18n.setLocale(request.auth.credentials && request.auth.credentials.language || language)
-  reply.view('pick-language')
-  // reply.view('pick-language', { languageChoice: language })
+  if (request.auth.credentials) {
+    return reply.redirect('/' + (request.auth.credentials.language || language) + '/')
+  }
+  request.i18n.setLocale(language)
+  reply.view('frontpage')
 }
 
 exports.register = function (server, options, next) {
-/*
-  server.state('localeCookie', {
-    autoValue: (request, next) => {
-      console.log(
-        'hello:',
-        request.i18n.locale || request.i18n.getLocale(),
-        request.i18n.locale,
-        request.i18n.getLocale(),
-        Object.keys(request)
-      )
-      next(null, request.i18n.locale || request.i18n.getLocale())
-    },
-    isSecure: false
-  })
-*/
-
   server.views({
     engines: { html: require('lodash-vision') },
     path: 'templates',
@@ -38,16 +20,10 @@ exports.register = function (server, options, next) {
 /*
   server.route({
     method: 'GET',
-    path: '/{languageCode}',
-    handler: { view: 'index' }
-  })
-*/
-
-  server.route({
-    method: 'GET',
     path: '/{languageCode}/',
     handler: { view: 'index' }
   })
+*/
 
   server.route({
     method: 'GET',
