@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<%= partials.head(data) %>
+<body>
+<div class="row column">
+<h1>Langue de la page d'accueil</h1>
+<p>Plusieurs cas sont possibles. On doit négocier (trouver l'intersection) entre
+les langues disponibles sur le serveur <code><%- data.app.languages.join(', ') %></code>
+et les choix de l'utilisateur.</p>
+<%= partials.languages(data) %>
+</div>
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/what-input.js"></script>
+<script src="/js/vendor/foundation.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

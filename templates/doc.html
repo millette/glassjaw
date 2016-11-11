@@ -3,8 +3,5 @@
 <%= partials.head(data) %>
 <body>
 <div class="row column">
-<h2>Un doc</h2>
-<pre>
-<%= JSON.stringify(data, null, ' ') %>
-</pre>
+<%= partials.doc(data) %>
 <%= partials.foot(data) %>
