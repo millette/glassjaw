@@ -2,9 +2,26 @@
 
 Install it:
 ```
-git clone https://github.com/millette/hapi-demo.git
-cd hapi-demo
+git clone https://github.com/millette/glassjaw.git
+cd glassjaw
 ```
+
+Install CouchDB:
+
+* Instructions: https://cwiki.apache.org/confluence/display/COUCHDB/Debian
+
+Dans la section «Add Erlang Solutions repository:», remplacer
+```
+sudo apt-get install -y libmozjs185 libmozjs185-dev
+```
+
+par
+```
+sudo apt-get install -y libmozjs185-dev
+```
+
+Le paquet ```libmozjs185``` n'existe pas, il s'agit de ```libmozjs185-1.0```
+et comme ```libmozjs185-dev``` en dépend, il n'est pas nécessaire de l'ajouter manuellement.
 
 Install redis server:
 ```
