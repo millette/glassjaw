@@ -11,6 +11,19 @@ exports.register = (server, options, next) => {
     isCached: options.templateCached
   })
 
+  const newDoc = function (request, reply) {
+    // console.log(Object.keys(request))
+    // console.log(request.payload)
+    // console.log(request.params)
+    const doc = { _id: request.payload.id, i18n: { } }
+    // request.payload._id = request.payload.id
+    // const id =
+    delete request.payload.id
+    doc.i18n[request.params.languageCode] = request.payload
+    console.log(doc)
+    reply('yup')
+  }
+
   const mapper = (request, callback) => {
     const it = [Config.get('/db/url'), 'ya']
     it.push(request.params.pathy ? request.params.pathy : '_all_docs')
@@ -47,6 +60,17 @@ exports.register = (server, options, next) => {
         mode: 'required'
       },
       handler: { view: 'new-doc' }
+    }
+  })
+
+  server.route({
+    method: 'POST',
+    path: '/new',
+    config: {
+      auth: {
+        mode: 'required'
+      },
+      handler: newDoc
     }
   })
 
