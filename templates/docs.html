@@ -3,8 +3,12 @@
 <%= partials.head(data) %>
 <body>
 <div class="row column">
+<h1>Top</h1>
 <%= partials.login(data) %>
 <h2><%- data.__('Les docs') %></h2>
+<% if (data.credentials && data.credentials.name) { %>
+<p><a class="button hollow" href="new">Créer un document</a></p>
+<% } %>
 <% _(data.docs).each((doc, i) => { %>
 <%= partials.doc({ doc: doc, i: i }) %>
 <% }) %>
