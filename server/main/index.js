@@ -41,6 +41,17 @@ exports.register = (server, options, next) => {
 
   server.route({
     method: 'GET',
+    path: '/new',
+    config: {
+      auth: {
+        mode: 'required'
+      },
+      handler: { view: 'new-doc' }
+    }
+  })
+
+  server.route({
+    method: 'GET',
     path: '/{pathy*}',
     handler: {
       proxy: {
